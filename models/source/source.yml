@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: source
+    schema: sales_report_source
+    tables:
+      - name: vending_machine
+      - name: item
+      - name: sale
