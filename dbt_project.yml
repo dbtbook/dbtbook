@@ -36,3 +36,5 @@ models:
       +schema: warehouse
     mart:
       +schema: mart
+      mart_sale:
+        +alias: sale
