@@ -38,3 +38,9 @@ models:
       +schema: mart
       mart_sale:
         +alias: sale
+
+vars:
+  start_date: '2025-01-01'
+  sales_report:
+    mart:
+      start_date: '2025-01-01'
