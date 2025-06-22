@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: item
+    description: 商品マスタ
+    columns:
+      - name: id
+        description: 商品ID
+      - name: name
+        description: 商品名
+      - name: price
+        description: 価格
+  - name: sale
+    description: 売上
+    columns:
+      - name: id
+        description: 売上ID
+      - name: vending_machine_id
+        description: 自動販売機ID
+      - name: item_id
+        description: 商品ID
+      - name: saled_at
+        description: 売上日時
+  - name: vending_machine
+    description: 自動販売機マスタ
+    columns:
+      - name: id
+        description: 自動販売機ID
+      - name: name
+        description: 自動販売機名
+      - name: address
+        description: 設置場所
