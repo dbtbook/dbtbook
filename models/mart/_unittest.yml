@@ -1,0 +1,17 @@
+unit_tests:
+  - name: test_mart_sale_start_dt
+    description: "mart_saleが指定日以降のデータのみを対象としていることのテスト"
+    model: mart_sale
+    overrides:
+      vars:
+        start_dt: '2025-01-01'
+    given:
+      - input: ref("sale")
+        rows:
+          - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: "2024-12-31"}
+          - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: "2025-01-01"}
+          - {id: 3, vending_machine_id: 1, item_id: 1, saled_at: "2025-01-02"}
+    expect:
+      rows:
+          - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: "2025-01-01"}
+          - {id: 3, vending_machine_id: 1, item_id: 1, saled_at: "2025-01-02"}
