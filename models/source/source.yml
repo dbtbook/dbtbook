@@ -12,5 +12,4 @@ sources:
           - name: price
             tests:
               - is_integer
-      - name: sale
-      - name: my_table
+      - name: s_sale

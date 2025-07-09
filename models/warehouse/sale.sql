@@ -11,7 +11,7 @@ with final as (
     cast(item_id as integer) as item_id,
     cast(saled_at as timestamp) as saled_at
   from
-    {{ source("source", "my_table") }}
+    {{ source("source", "s_sale") }}
 {% if is_incremental() %}
   where
     cast(saled_at as timestamp) > (

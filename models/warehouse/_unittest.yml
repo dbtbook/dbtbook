@@ -6,7 +6,7 @@ unit_tests:
         # unit test this model in "full refresh" mode
         is_incremental: false 
     given:
-      - input: source("source", "my_table")
+      - input: source("source", "s_sale")
         rows:
           - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: 2025-01-01}
           - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: 2025-01-02}
@@ -21,28 +21,7 @@ unit_tests:
       macros:
         is_incremental: true
     given:
-      - input: source("source", "my_table")
-        rows:
-          - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-01'}
-          - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-02'}
-          - {id: 3, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-03'}
-      - input: this 
-        # contents of current my_incremental_model
-        rows:
-          - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-01'}
-    expect:
-      # what will be inserted/merged into my_incremental_model
-      rows: 
-        - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-02'}
-        - {id: 3, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-03'}
-
-  - name: test_incremental_insert
-    model: my_incremental_model
-    overrides:
-      macros:
-        is_incremental: true
-    given:
-      - input: source("source", "my_table")
+      - input: source("source", "s_sale")
         rows:
           - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-01'}
           - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-02'}
