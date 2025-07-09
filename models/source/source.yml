@@ -13,11 +13,4 @@ sources:
             tests:
               - is_integer
       - name: sale
-        columns:
-          - name: id
-            description: 売上ID
-            tests:
-              - not_null
-          - name:  vending_machine_id
-          - name: item_id
-          - name: saled_at
+      - name: my_table
