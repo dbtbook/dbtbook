@@ -32,15 +32,17 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   sales_report:
     # Config indicated by + and applies to all files under models/example/
-    warehouse:
-      +schema: warehouse
-    mart:
-      +schema: mart
+    staging:
+      +schema: staging
+    intermediate:
+      +schema: intermediate
+    marts:
+      +schema: marts
       mart_sale:
         +alias: sale
 
 vars:
   start_date: '2025-01-01'
   sales_report:
-    mart:
+    marts:
       start_date: '2025-01-01'
