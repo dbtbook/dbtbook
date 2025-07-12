@@ -1,5 +1,5 @@
 unit_tests:
-  - name: test_sale_full_refresh_mode
+  - name: test_sale_model_when_full_refresh
     model: sale
     overrides:
       macros:
@@ -10,12 +10,16 @@ unit_tests:
         rows:
           - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: 2025-01-01}
           - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: 2025-01-02}
+      - input: this 
+        # contents of current my_incremental_model
+        rows:
+          - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-01'}
     expect:
       rows:
         - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: 2025-01-01}
         - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: 2025-01-02}
 
-  - name: test_sale_incremental_model
+  - name: test_sale_model_when_incremental
     model: sale
     overrides:
       macros:
@@ -25,7 +29,6 @@ unit_tests:
         rows:
           - {id: 1, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-01'}
           - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-02'}
-          - {id: 3, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-03'}
       - input: this 
         # contents of current my_incremental_model
         rows:
@@ -34,4 +37,3 @@ unit_tests:
       # what will be inserted/merged into my_incremental_model
       rows: 
         - {id: 2, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-02'}
-        - {id: 3, vending_machine_id: 1, item_id: 1, saled_at: '2025-01-03'}
